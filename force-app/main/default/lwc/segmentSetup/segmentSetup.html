@@ -1,0 +1,51 @@
+<template>
+	<div class="slds-grid slds-wrap">
+		<div class="slds-size_1-of-1">
+			<lightning-card title="Adjust Segment Details" icon-name="standard:segments">
+				<lightning-button-icon icon-name="utility:refresh" slot="actions" name="refresh" onclick={getSegments}>
+					<label>Refresh</label>
+				</lightning-button-icon>
+				<div class="slds-grid slds-wrap slds-var-p-right_medium slds-var-p-left_medium slds-var-p-bottom_medium">
+					<template if:true={loading}>
+						<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+					</template>
+					<lightning-accordion class="slds-large-size_1-of-2">
+						<template if:true={segments}>
+							<template for:each={segments} for:item="s">
+								<lightning-accordion-section key={s.DeveloperName} name={s.MasterLabel} label={s.MasterLabel}>
+									<div class="slds-grid slds-wrap slds-gutters">
+										<div class="slds-col slds-size_1-of-1">
+											<div class="slds-form-element">
+												<label class="slds-form-element__label" for={s.masterLabelID}>Master Label</label>
+												<div class="slds-form-element__control">
+													<input
+														onchange={onChangeHandler}
+														value={s.MasterLabel}
+														type="text"
+														name={s.masterLabelID}
+														placeholder="Name of the segment"
+														class="slds-input" />
+												</div>
+											</div>
+										</div>
+										<div class="slds-col slds-size_1-of-1">
+											<div class="slds-form-element">
+												<lightning-input
+													name={s.colourID}
+													onchange={onChangeHandler}
+													value={s.Colour__c}
+													type="color"
+													label="Segment Colour"></lightning-input>
+											</div>
+										</div>
+									</div>
+								</lightning-accordion-section>
+							</template>
+						</template>
+						<lightning-button label="Save Changes" name="Save Changes" onclick={onSubmitHandler}></lightning-button>
+					</lightning-accordion>
+				</div>
+			</lightning-card>
+		</div>
+	</div>
+</template>

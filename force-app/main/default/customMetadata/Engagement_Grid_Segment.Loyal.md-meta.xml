@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<label>Loyal</label>
+	<protected>false</protected>
+	<values>
+		<field>Colour__c</field>
+		<value xsi:type="xsd:string">#A2BF68</value>
+	</values>
+	<values>
+		<field>Max_RFM_Score__c</field>
+		<value xsi:type="xsd:string">6-6-6</value>
+	</values>
+	<values>
+		<field>Min_RFM_Score__c</field>
+		<value xsi:type="xsd:string">4-4-1</value>
+	</values>
+</CustomMetadata>

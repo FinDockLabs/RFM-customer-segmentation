@@ -1,0 +1,59 @@
+<template>
+	<div class="slds-grid slds-wrap">
+		<div class="slds-size_1-of-1">
+			<lightning-card title="Configure Ranges" icon-name="standard:segments">
+				<lightning-button-icon icon-name="utility:refresh" slot="actions" name="refresh" onclick={loadRanges}>
+					<label>Refresh</label>
+				</lightning-button-icon>
+				<div class="slds-grid slds-wrap slds-var-p-right_medium slds-var-p-left_medium slds-var-p-bottom_medium">
+					<template if:true={loading}>
+						<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+					</template>
+					<lightning-accordion class="slds-large-size_1-of-2">
+						<div class="slds-box slds-theme_shade">
+							<p class="slds-var-p-around_small slds-text-body_regular">Ranges can be inputted in the following formats:</p>
+							<ul>
+								<li>Single digit, e.g. "1" would mean only contacts matching 1 exactly will be selected</li>
+								<li>Number range, e.g. "1-3" would mean contacts matching 1, 2 or 3 would be selected</li>
+								<li>No upper limit, e.g. "365+" would mean contacts matching 365 or more will be selected</li>
+							</ul>
+						</div>
+						<template if:true={ranges}>
+							<template for:each={ranges} for:item="r">
+								<lightning-accordion-section key={r.DeveloperName} name={r.MasterLabel} label={r.MasterLabel}>
+									<div class="slds-grid slds-wrap slds-gutters">
+										<div class="slds-col slds-size_1-of-1">
+											<lightning-input
+												name={r.rRangeID}
+												onchange={onChangeHandler}
+												value={r.Recency_Range__c}
+												type="text"
+												label="Recency Range"></lightning-input>
+										</div>
+										<div class="slds-col slds-size_1-of-1">
+											<lightning-input
+												name={r.fRangeID}
+												onchange={onChangeHandler}
+												value={r.Frequency_Range__c}
+												type="text"
+												label="Frequency Range"></lightning-input>
+										</div>
+										<div class="slds-col slds-size_1-of-1">
+											<lightning-input
+												name={r.mRangeID}
+												onchange={onChangeHandler}
+												value={r.Monetary_Range__c}
+												type="text"
+												label="Monetary Value Range"></lightning-input>
+										</div>
+									</div>
+								</lightning-accordion-section>
+							</template>
+						</template>
+						<lightning-button label="Save Changes" name="Save Changes" onclick={onSubmitHandler}></lightning-button>
+					</lightning-accordion>
+				</div>
+			</lightning-card>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+	<labels>
+		<fullName>Contact_RFM_Scoring</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Contact RFM Scoring</shortDescription>
+		<value>Contact RFM Scoring</value>
+	</labels>
+	<labels>
+		<fullName>Frequency</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Frequency</shortDescription>
+		<value>Frequency</value>
+	</labels>
+	<labels>
+		<fullName>Monetary_Value</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Monetary Value</shortDescription>
+		<value>Monetary Value</value>
+	</labels>
+	<labels>
+		<fullName>Recency</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Recency</shortDescription>
+		<value>Recency</value>
+	</labels>
+	<labels>
+		<fullName>Frequency_Description</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Frequency Description</shortDescription>
+		<value>Customer made {!value} payments</value>
+	</labels>
+	<labels>
+		<fullName>Monetary_Value_Description</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Monetary Value Description</shortDescription>
+		<value>Customer Paid  {!value}</value>
+	</labels>
+	<labels>
+		<fullName>Recency_Description</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Recency Description</shortDescription>
+		<value>Last Payment was {!value} days ago</value>
+	</labels>
+	<labels>
+		<fullName>No_Payment_Text</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>No Payment Text</shortDescription>
+		<value>Contact has not made any payments yet.</value>
+	</labels>
+	<labels>
+		<fullName>Monetary_Value_Text</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Monetary Value Text</shortDescription>
+		<value>Average Monetary Value:</value>
+	</labels>
+</CustomLabels>

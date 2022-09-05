@@ -1,0 +1,70 @@
+{
+	"trailingComma": "none",
+	"singleQuote": true,
+	"tabWidth": 4,
+	"printWidth": 180,
+	"useTabs": true,
+	"bracketSpacing": true,
+	"apexInsertFinalNewline": false,
+	"bracketSameLine": true,
+	"singleAttributePerLine": false,
+	"overrides": [
+		{
+			"files": "**/lwc/**/*.html",
+			"options": {
+				"parser": "lwc"
+			}
+		},
+		{
+			"files": "*.{cmp,page,component}",
+			"options": {
+				"parser": "html",
+				"tabWidth": 4
+			}
+		},
+		{
+			"files": "**/*.{cls,trigger,apex}",
+			"options": {
+				"parser": "apex",
+				"tabWidth": 4
+			}
+		},
+		{
+			"files": "**/*.json",
+			"options": {
+				"useTabs": true,
+				"tabWidth": 4
+			}
+		},
+		{
+			"files": ["docs/*.html", "doc-assets/*.html"],
+			"options": {
+				"parser": "html",
+				"useTabs": false,
+				"tabWidth": 4
+			}
+		},
+		{
+			"files": "scripts/apex/*.apex",
+			"options": {
+				"parser": "apex-anonymous"
+			}
+		},
+		{
+			"files": ".prettierrc",
+			"options": {
+				"parser": "json",
+        "tabWidth": 4
+			}
+		},
+		{
+			"files": "*.xml",
+			"options": {
+				"parser": "xml",
+				"xmlWhitespaceSensitivity": "ignore",
+				"tabWidth": 4,
+				"xmlSelfClosingSpace": true
+			}
+		}
+	]
+}

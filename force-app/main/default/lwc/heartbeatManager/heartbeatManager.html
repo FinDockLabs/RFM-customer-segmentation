@@ -1,0 +1,47 @@
+<template>
+	<div class="slds-grid slds-wrap">
+		<div class="slds-size_1-of-1">
+			<lightning-card title="Schedule Heartbeat" icon-name="standard:apex">
+				<lightning-button-icon icon-name="utility:refresh" slot="actions" name="refresh" onclick={getScheduledCron}>
+					<label>Refresh</label>
+				</lightning-button-icon>
+				<div class="slds-grid slds-wrap slds-var-p-right_medium slds-var-p-left_medium slds-var-p-bottom_medium">
+					<template if:true={loading}>
+						<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+					</template>
+					<div class="slds-size_1-of-1 slds-var-p-bottom_x-small slds-var-p-top_x-small slds-border_bottom">
+						<h2 class="slds-text-heading_small slds-var-p-bottom_x-small">Run Re-Calculation job</h2>
+						<p class="slds-var-p-bottom_x-small">You can manually trigger RFM re-calculation.</p>
+						<lightning-button label="Recalculate" name="Recalculate" onclick={runFirstJob}></lightning-button>
+					</div>
+					<template if:false={heartbeatScheduled}>
+						<div class="slds-size_1-of-1 slds-var-p-bottom_x-small slds-var-p-top_x-small slds-border_bottom">
+							<h2 class="slds-text-heading_small slds-var-p-bottom_x-small">Schedule Heartbeat</h2>
+							<lightning-combobox
+								name="startingHour"
+								class="slds-var-p-bottom_x-small"
+								value={startingHour}
+								options={hours}
+								label="At what hour would you like the RFM calculation to run daily"
+								required
+								onchange={onChangeHandler}></lightning-combobox>
+							<lightning-button label="Schedule Heartbeat" name="Schedule Heartbeat" onclick={scheduleHeartbeat}></lightning-button>
+						</div>
+					</template>
+					<div class="slds-size_1-of-1 slds-var-p-bottom_x-small slds-var-p-top_small">
+						<h2 class="slds-text-heading_small slds-var-p-bottom_x-small">Currently Scheduled Heartbeat</h2>
+						<template if:true={heartbeatScheduled}>
+							<p class="slds-var-p-bottom_x-small">
+								Heartbeat is currently scheduled for: <lightning-formatted-time class="slds-var-p-left_xx-small" value={formattedHour}></lightning-formatted-time>
+							</p>
+						</template>
+						<template if:false={heartbeatScheduled}>
+							<p class="slds-var-p-bottom_x-small">The heartbeat is not currently scheduled.</p>
+						</template>
+						<lightning-button label="Delete Heartbeat" name="Delete Heartbeat" onclick={deleteHB}></lightning-button>
+					</div>
+				</div>
+			</lightning-card>
+		</div>
+	</div>
+</template>

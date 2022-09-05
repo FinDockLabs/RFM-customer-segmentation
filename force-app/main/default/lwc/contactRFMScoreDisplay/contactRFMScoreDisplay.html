@@ -1,0 +1,51 @@
+<template>
+	<lightning-card title={labels.Contact_RFM_Scoring} icon-name="standard:unified_health_score">
+		<div class="slds-border_bottom slds-var-m-bottom_medium slds-var-m-horizontal_small"></div>
+		<template if:true={loading}>
+			<lightning-card>
+				<div class="slds-align_absolute-center slds-var-p-around_large">
+					<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+				</div>
+			</lightning-card>
+		</template>
+		<template if:true={noPayments}>
+			<article class="slds-card">
+				<div class="slds-card__body slds-card__body_inner slds-text-align_center slds-text-body_small">{labels.No_Payment_Text}</div>
+			</article>
+		</template>
+		<template if:false={noPayments}>
+			<template if:false={loading}>
+				<div class="slds-grid slds-wrap slds-var-p-horizontal_small">
+					<div class="slds-var-p-around_xx-small slds-col slds-size_1-of-1 slds-var-m-bottom_medium" style={segmentStyle}>
+						<div class="slds-text-heading_small slds-text-align_center" style="text-transform: uppercase">{segment}</div>
+					</div>
+					<div class="slds-var-p-around_xx-small slds-col slds-size_1-of-3">
+						<article class="slds-card">
+							<header class="slds-text-align_center" style="font-weight: bold">{labels.Recency}</header>
+							<div class="slds-card__body slds-card__body_inner slds-text-align_center slds-text-heading_small">{r}</div>
+							<div class="slds-card__body slds-card__body_inner slds-text-align_center slds-text-body_small">{labels.Recency_Description}</div>
+						</article>
+					</div>
+					<div class="slds-var-p-around_xx-small slds-col slds-size_1-of-3">
+						<article class="slds-card">
+							<header class="slds-text-align_center" style="font-weight: bold">{labels.Frequency}</header>
+							<div class="slds-card__body slds-card__body_inner slds-text-align_center slds-text-heading_small">{f}</div>
+							<div class="slds-card__body slds-card__body_inner slds-text-align_center slds-text-body_small">{labels.Frequency_Description}</div>
+						</article>
+					</div>
+					<div class="slds-var-p-around_xx-small slds-col slds-size_1-of-3">
+						<article class="slds-card">
+							<header class="slds-text-align_center" style="font-weight: bold">{labels.Monetary_Value}</header>
+							<div class="slds-card__body slds-card__body_inner slds-text-align_center slds-text-heading_small">{m}</div>
+							<div class="slds-card__body slds-card__body_inner slds-text-align_center slds-text-body_small">
+								{labels.Monetary_Value_Before}
+								<lightning-formatted-number format-style="currency" value={m_value}></lightning-formatted-number>
+								{labels.Monetary_Value_After}
+							</div>
+						</article>
+					</div>
+				</div>
+			</template>
+		</template>
+	</lightning-card>
+</template>

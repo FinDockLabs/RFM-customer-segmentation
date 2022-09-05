@@ -1,0 +1,138 @@
+<template>
+	<template if:false={loaded}>
+		<lightning-card>
+			<div class="slds-align_absolute-center slds-var-p-around_large">
+				<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+			</div>
+		</lightning-card>
+	</template>
+	<template if:true={loaded}>
+		<lightning-card>
+			<div class="slds-grid slds-wrap">
+				<div class="slds-col slds-size_1-of-12">
+					<div class="slds-grid">
+						<div class="slds-col slds-size_1-of-2 slds-align_absolute-center">
+							<div class="slds-text-heading_small text-vertical all-caps">{yAxisLabel}</div>
+						</div>
+						<div class="slds-col slds-size_1-of-2" style="min-width: 2rem">
+							<div class="slds-text-align_right slds-grid slds-grid_vertical y-axis">
+								<template for:each={yAxisValues} for:item="value">
+									<div key={value} class="slds-col slds-text-body_small">{value}</div>
+								</template>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="slds-col slds-size_10-of-12">
+					<div class="slds-grid slds-wrap">
+						<div class="slds-col slds-size_1-of-1 slds-text-align_center slds-text-heading_small">{xAxisLabel}</div>
+						<template for:each={xAxisValues} for:item="value">
+							<div key={value} class="slds-col slds-size_1-of-6 slds-text-align_center slds-text-body_small">{value}<br />days</div>
+						</template>
+					</div>
+					<table class="engagement-grid">
+						<tbody>
+							<tr>
+								<td rowspan="3" colspan="1" style={tiles.Red_Alert.inlineStyle} class="slds-var-p-around_x-small body" onclick={tiles.Red_Alert.onClick}>
+									<div class="slds-text-heading_small slds-text-align_right">{tiles.Red_Alert.title}</div>
+									<div class="slds-text-body_small slds-text-align_right">{tiles.Red_Alert.description}</div>
+									<template if:true={tiles.Red_Alert.monetaryVal}>
+										<div class="slds-text-body_small slds-text-align_right">
+											{labels.Monetary_Value_Text}&nbsp;
+											<lightning-formatted-number value={tiles.Red_Alert.monetaryVal} format-style="currency"></lightning-formatted-number>
+										</div>
+									</template>
+								</td>
+								<td rowspan="3" colspan="2" style={tiles.At_Risk.inlineStyle} class="slds-var-p-around_x-small body" onclick={tiles.At_Risk.onClick}>
+									<div class="slds-text-heading_small slds-text-align_right">{tiles.At_Risk.title}</div>
+									<div class="slds-text-body_small slds-text-align_right">{tiles.At_Risk.description}</div>
+									<template if:true={tiles.At_Risk.monetaryVal}>
+										<div class="slds-text-body_small slds-text-align_right">
+											{labels.Monetary_Value_Text}&nbsp;
+											<lightning-formatted-number value={tiles.At_Risk.monetaryVal} format-style="currency"></lightning-formatted-number>
+										</div>
+									</template>
+								</td>
+								<td rowspan="3" colspan="3" style={tiles.Loyal.inlineStyle} class="slds-var-p-around_x-small body" onclick={tiles.Loyal.onClick}>
+									<div class="slds-text-heading_small slds-text-align_right">{tiles.Loyal.title}</div>
+									<div class="slds-text-body_small slds-text-align_right">{tiles.Loyal.description}</div>
+									<template if:true={tiles.Loyal.monetaryVal}>
+										<div class="slds-text-body_small slds-text-align_right">
+											{labels.Monetary_Value_Text}&nbsp;
+											<lightning-formatted-number value={tiles.Loyal.monetaryVal} format-style="currency"></lightning-formatted-number>
+										</div>
+									</template>
+								</td>
+							</tr>
+							<tr></tr>
+							<tr></tr>
+							<tr>
+								<td rowspan="3" colspan="3" style={tiles.Sleepers.inlineStyle} class="slds-var-p-around_x-small body" onclick={tiles.Sleepers.onClick}>
+									<div class="slds-text-heading_small slds-text-align_right">{tiles.Sleepers.title}</div>
+									<div class="slds-text-body_small slds-text-align_right">{tiles.Sleepers.description}</div>
+									<template if:true={tiles.Sleepers.monetaryVal}>
+										<div class="slds-text-body_small slds-text-align_right">
+											{labels.Monetary_Value_Text}&nbsp;
+											<lightning-formatted-number value={tiles.Sleepers.monetaryVal} format-style="currency"></lightning-formatted-number>
+										</div>
+									</template>
+								</td>
+								<td rowspan="3" style={tiles.Drifting.inlineStyle} class="slds-var-p-around_x-small body" onclick={tiles.Drifting.onClick}>
+									<div class="slds-text-heading_small slds-text-align_right">{tiles.Drifting.title}</div>
+									<div class="slds-text-body_small slds-text-align_right">{tiles.Drifting.description}</div>
+									<template if:true={tiles.Drifting.monetaryVal}>
+										<div class="slds-text-body_small slds-text-align_right">
+											{labels.Monetary_Value_Text}&nbsp;
+											<lightning-formatted-number value={tiles.Drifting.monetaryVal} format-style="currency"></lightning-formatted-number>
+										</div>
+									</template>
+								</td>
+								<td rowspan="2" colspan="2" style={tiles.Promising.inlineStyle} class="slds-var-p-around_x-small body" onclick={tiles.Promising.onClick}>
+									<div class="slds-text-heading_small slds-text-align_right">{tiles.Promising.title}</div>
+									<div class="slds-text-body_small slds-text-align_right">{tiles.Promising.description}</div>
+									<template if:true={tiles.Promising.monetaryVal}>
+										<div class="slds-text-body_small slds-text-align_right">
+											{labels.Monetary_Value_Text}&nbsp;
+											<lightning-formatted-number value={tiles.Promising.monetaryVal} format-style="currency"></lightning-formatted-number>
+										</div>
+									</template>
+								</td>
+							</tr>
+							<tr></tr>
+							<tr>
+								<td colspan="2" style={tiles.New.inlineStyle} class="slds-var-p-around_x-small body" onclick={tiles.New.onClick}>
+									<div class="slds-text-heading_small slds-text-align_right">{tiles.New.title}</div>
+									<div class="slds-text-body_small slds-text-align_right">{tiles.New.description}</div>
+									<template if:true={tiles.New.monetaryVal}>
+										<div class="slds-text-body_small slds-text-align_right">
+											{labels.Monetary_Value_Text}&nbsp;
+											<lightning-formatted-number value={tiles.New.monetaryVal} format-style="currency"></lightning-formatted-number>
+										</div>
+									</template>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="slds-col slds-size_1-of-12"></div>
+			</div>
+			<div class="slds-size_1-of-1 slds-align_absolute-center" if:false={refreshJobInProgress}>
+				<lightning-button
+					variant="brand"
+					class="slds-var-m-top_medium"
+					label="Refresh Data"
+					onclick={reCalculateHandler}
+					aria-label="Refresh"
+					disabled={refreshJobInProgress}>
+					Refresh Data</lightning-button
+				>
+			</div>
+			<template if:true={refreshJobInProgress}>
+				<div class="slds-size_1-of-1 slds-align_absolute-center slds-var-m-top_medium slds-var-p-around_small">Progress: {refreshJobProgress}%</div>
+				<span style="width: 15rem">
+					<lightning-progress-bar value={refreshJobProgress} size="large" variant="circular"></lightning-progress-bar>
+				</span>
+			</template>
+		</lightning-card>
+	</template>
+</template>

@@ -1,0 +1,86 @@
+<template>
+	<lightning-card>
+		<lightning-tabset>
+			<lightning-tab label="General Setup">
+				<div class="slds-grid slds-wrap">
+					<div class="slds-size_1-of-1">
+						<template if:true={settings.Re_Calculation_Due__c}>
+							<p class="slds-box slds-theme_shade slds-theme_alert-texture">Re-calculation is needed, please go to General Setup and manually re-calculate</p>
+						</template>
+					</div>
+					<div class="slds-size_1-of-1">
+						<lightning-card title="General Configuration" icon-name="utility:settings">
+							<lightning-button-icon icon-name="utility:refresh" slot="actions" name="refresh" onclick={loadSettings}>
+								<label>Refresh</label>
+							</lightning-button-icon>
+							<div class="slds-grid slds-wrap slds-var-p-right_medium slds-var-p-left_medium slds-var-p-bottom_medium size slds-size_1-of-1 slds-large-size_1-of-2">
+								<template if:true={loading}>
+									<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+								</template>
+								<div class="slds-col slds-size_1-of-1">
+									<lightning-input
+										onchange={onChangeHandler}
+										value={settings.Report_Id__c}
+										max="18"
+										type="text"
+										name="Report_Id__c"
+										id="Report_Id__c"
+										label="Report ID"
+										placeholder="Unique ID for the report that will be linked in the graph"
+										field-level-help="Input the 18 digit Unique ID for the report that will be linked from the grid. The report must have the first filter set to 'RFM Segment' field on the contact">
+									</lightning-input>
+								</div>
+								<lightning-button label="Save Changes" name="Save Changes" onclick={onSubmitHandler} class="slds-var-m-top_medium"></lightning-button>
+							</div>
+						</lightning-card>
+						<c-heartbeat-manager load-settings={loadSettings} recalculation-not-due={recalculationNotDue}></c-heartbeat-manager>
+					</div>
+				</div>
+			</lightning-tab>
+			<lightning-tab label="Segments">
+				<div class="slds-size_1-of-1">
+					<template if:true={settings.Re_Calculation_Due__c}>
+						<p class="slds-box slds-theme_shade slds-theme_alert-texture">Re-calculation is needed, please go to General Setup and manually re-calculate</p>
+					</template>
+				</div>
+				<c-segment-setup recalculation-is-due={recalculationIsDue}></c-segment-setup>
+			</lightning-tab>
+			<lightning-tab label="RFM Ranges">
+				<div class="slds-size_1-of-1">
+					<template if:true={settings.Re_Calculation_Due__c}>
+						<p class="slds-box slds-theme_shade slds-theme_alert-texture">Re-calculation is needed, please go to General Setup and manually re-calculate</p>
+					</template>
+				</div>
+				<c-ranges-setup recalculation-is-due={recalculationIsDue}></c-ranges-setup>
+			</lightning-tab>
+			<lightning-tab label="Selection Filters">
+				<div class="slds-size_1-of-1">
+					<template if:true={settings.Re_Calculation_Due__c}>
+						<p class="slds-box slds-theme_shade slds-theme_alert-texture">Re-calculation is needed, please go to General Setup and manually re-calculate</p>
+					</template>
+				</div>
+				<lightning-card title="Selection Filters" icon-name="standard:filter_criteria">
+					<lightning-button-icon icon-name="utility:refresh" slot="actions" name="refresh" onclick={loadSettings}>
+						<label>Refresh</label>
+					</lightning-button-icon>
+					<div class="slds-grid slds-wrap slds-var-p-right_medium slds-var-p-left_medium slds-var-p-bottom_medium size slds-size_1-of-1 slds-large-size_1-of-2">
+						<div class="slds-col slds-size_1-of-1 slds-var-m-bottom_medium">
+							<lightning-input
+								onchange={onChangeHandler}
+								value={settings.Date_Range_Start__c}
+								max={oneYearAgo}
+								type="date"
+								label="Date Range Start"
+								name="Date_Range_Start__c"
+								placeholder="Earliest payment date for RFM calculation"
+								field-level-help="All time will be considered if this field is left blank"></lightning-input>
+						</div>
+						<div class="slds-col slds-size_1-of-1">
+							<lightning-button label="Save Changes" name="Save Changes" onclick={onSubmitHandler} class="slds-var-m-top_medium"></lightning-button>
+						</div>
+					</div>
+				</lightning-card>
+			</lightning-tab>
+		</lightning-tabset>
+	</lightning-card>
+</template>
