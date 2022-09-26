@@ -25,7 +25,7 @@ The RFM scores and the customer segment is stored on field level on every contac
 # Installation and configuration
 
 1. Install the latest package version in your Salesforce environment: [releases](https://github.com/FinDockLabs/RFM-customer-segmentation/releases/).
-2. Assign the following permission set to each user who will need to use RFM Customer Segmentation package: `Customer Segmentation`
+2. Assign the following permission set to each user who will need to use RFM Customer Segmentation package: `Engagement Grid`
 3. Add the lightning component `ContactRFMScoreDisplay` to the contact page. 
 3. From the App Launcher go to the `RFM Customer Segmentation` app. 
 4. Start the initial calculation of the RFM scores and segments of your contacts by clicking on the `Refresh Data` button. 
