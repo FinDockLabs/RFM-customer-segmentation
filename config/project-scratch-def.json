@@ -1,6 +1,7 @@
 {
-	"orgName": "FinDock Labs",
+	"orgName": "FinDock Labs - Engagement Grid",
 	"edition": "Developer",
+	"language": "en_EN",
 	"features": ["EnableSetPasswordInApi"],
 	"settings": {
 		"lightningExperienceSettings": {
