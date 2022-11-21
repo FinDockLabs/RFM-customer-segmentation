@@ -18,10 +18,10 @@ public with sharing class ContactRFMScoreDisplayController {
 		Contact c = [
 			SELECT
 				id,
-				Recency_Score__c,
-				Frequency_Score__c,
-				Monetary_Score__c,
-				RFM_Segment__c,
+				EngGrid_Recency_Score__c,
+				EngGrid_Frequency_Score__c,
+				EngGrid_Monetary_Score__c,
+				EngGrid_RFM_Segment__c,
 				(
 					SELECT Id, cpm__Amount__c, cpm__Collection_Date__c
 					FROM cpm__Payments__r
@@ -46,16 +46,16 @@ public with sharing class ContactRFMScoreDisplayController {
 			totalSum += p.cpm__Amount__c;
 		}
 
-		String colour = [SELECT Colour__c FROM Engagement_Grid_Segment__mdt WHERE Label = :c.RFM_Segment__c][0].Colour__c;
+		String colour = [SELECT Colour__c FROM Engagement_Grid_Segment__mdt WHERE Label = :c.EngGrid_RFM_Segment__c][0].Colour__c;
 
 		rfmScore.put('status', 'success');
-		rfmScore.put('r', c.Recency_Score__c);
+		rfmScore.put('r', c.EngGrid_Recency_Score__c);
 		rfmScore.put('r_detail', String.valueOf(c.cpm__Payments__r[0].cpm__Collection_Date__c.daysBetween(Date.today())));
-		rfmScore.put('f', c.Frequency_Score__c);
+		rfmScore.put('f', c.EngGrid_Frequency_Score__c);
 		rfmScore.put('f_detail', String.valueOf(c.cpm__Payments__r.size()));
-		rfmScore.put('m', c.Monetary_Score__c);
+		rfmScore.put('m', c.EngGrid_Monetary_Score__c);
 		rfmScore.put('m_detail', String.valueOf(totalSum.setScale(2)));
-		rfmScore.put('segment', c.RFM_Segment__c);
+		rfmScore.put('segment', c.EngGrid_RFM_Segment__c);
 		rfmScore.put('max', job.recencyRanges.size());
 		rfmScore.put('colour', colour);
 		return rfmScore;

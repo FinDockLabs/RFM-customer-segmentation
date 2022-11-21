@@ -16,6 +16,6 @@
 	</values>
 	<values>
 		<field>Y_Axis__c</field>
-		<value xsi:type="xsd:string">Frequency_Score__c</value>
+		<value xsi:type="xsd:string">EngGrid_Frequency_Score__c</value>
 	</values>
 </CustomMetadata>

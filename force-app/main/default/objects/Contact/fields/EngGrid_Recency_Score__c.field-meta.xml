@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-	<fullName>Monetary_Score__c</fullName>
+	<fullName>EngGrid_Recency_Score__c</fullName>
 	<externalId>false</externalId>
-	<inlineHelpText>Monetary score based on the total amount this contact has paid. Used for RFM calculation</inlineHelpText>
-	<label>Monetary Score</label>
+	<inlineHelpText>Recency Score based on the date of last payment. Used for RFM calculation</inlineHelpText>
+	<label>Recency Score</label>
 	<precision>1</precision>
 	<required>false</required>
 	<scale>0</scale>

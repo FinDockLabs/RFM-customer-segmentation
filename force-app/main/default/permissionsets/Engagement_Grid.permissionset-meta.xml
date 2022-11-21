@@ -6,22 +6,22 @@
 	</applicationVisibilities>
 	<fieldPermissions>
 		<editable>true</editable>
-		<field>Contact.Frequency_Score__c</field>
+		<field>Contact.EngGrid_Frequency_Score__c</field>
 		<readable>true</readable>
 	</fieldPermissions>
 	<fieldPermissions>
 		<editable>true</editable>
-		<field>Contact.Monetary_Score__c</field>
+		<field>Contact.EngGrid_Monetary_Score__c</field>
 		<readable>true</readable>
 	</fieldPermissions>
 	<fieldPermissions>
 		<editable>true</editable>
-		<field>Contact.RFM_Segment__c</field>
+		<field>Contact.EngGrid_RFM_Segment__c</field>
 		<readable>true</readable>
 	</fieldPermissions>
 	<fieldPermissions>
 		<editable>true</editable>
-		<field>Contact.Recency_Score__c</field>
+		<field>Contact.EngGrid_Recency_Score__c</field>
 		<readable>true</readable>
 	</fieldPermissions>
 	<hasActivationRequired>false</hasActivationRequired>

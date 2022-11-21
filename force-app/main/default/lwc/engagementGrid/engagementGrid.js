@@ -10,8 +10,8 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import Monetary_Value_Text from '@salesforce/label/c.Monetary_Value_Text';
 
 const yAxisLabels = {
-	Frequency_Score__c: 'Frequency',
-	Monetary_Score__c: 'Monetary Value'
+	EngGrid_Frequency_Score__c: 'Frequency',
+	EngGrid_Monetary_Score__c: 'Monetary Value'
 };
 export default class EngagementGrid extends LightningElement {
 	labels = {
@@ -21,7 +21,7 @@ export default class EngagementGrid extends LightningElement {
 	tiles = {};
 	reportId = null;
 
-	yAxis = 'Frequency_Score__c';
+	yAxis = 'EngGrid_Frequency_Score__c';
 
 	xAxisLabel = 'Recency';
 	yAxisLabel = yAxisLabels[this.yAxis];
@@ -65,11 +65,11 @@ export default class EngagementGrid extends LightningElement {
 						this.tiles[s.DeveloperName].description = `${result[s.MasterLabel]} Customers (${percentage}%)`;
 					}
 				});
-				this.yAxis = settings.Y_Axis__c || 'Frequency_Score__c';
+				this.yAxis = settings.Y_Axis__c || 'EngGrid_Frequency_Score__c';
 				this.yAxisLabel = yAxisLabels[this.yAxis];
 				ranges.forEach((e) => {
 					this.xAxisValues.push(e.Recency_Range__c);
-					this.yAxisValues.push(e[this.yAxis === 'Frequency_Score__c' ? 'Frequency_Range__c' : 'Monetary_Range__c']);
+					this.yAxisValues.push(e[this.yAxis === 'EngGrid_Frequency_Score__c' ? 'Frequency_Range__c' : 'Monetary_Range__c']);
 				});
 				this.loaded = true;
 			})

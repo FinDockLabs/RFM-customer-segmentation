@@ -47,7 +47,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>Contact.RFM_Segment__c</column>
+            <column>Contact.EngGrid_RFM_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

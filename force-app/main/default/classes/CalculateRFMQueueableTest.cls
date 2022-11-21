@@ -14,7 +14,7 @@ public with sharing class CalculateRFMQueueableTest {
 		Test.stopTest();
 
 		// then
-		List<Contact> contactList = [SELECT Id FROM Contact WHERE RFM_Segment__c != NULL];
+		List<Contact> contactList = [SELECT Id FROM Contact WHERE EngGrid_RFM_Segment__c != NULL];
 		System.assert(contactList.size() > 0);
 	}
 }
