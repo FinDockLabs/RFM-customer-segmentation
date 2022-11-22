@@ -8,6 +8,8 @@ import recalculateRFM from '@salesforce/apex/EngagementGridController.recalculat
 import getSettings from '@salesforce/apex/EngagementGridSetupController.getSettings';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import Monetary_Value_Text from '@salesforce/label/c.Monetary_Value_Text';
+import Customer_Label from '@salesforce/label/c.Customer_Label';
+import Customer_Singular_Label from '@salesforce/label/c.Customer_Singular_Label';
 
 const yAxisLabels = {
 	EngGrid_Frequency_Score__c: 'Frequency',
@@ -55,14 +57,18 @@ export default class EngagementGrid extends LightningElement {
 					const onClick = this.reportId ? () => window.open(`/lightning/r/${this.reportId}/view?fv0=${s.MasterLabel}`, '_blank') : this.noReportOnclick;
 					this.tiles[s.DeveloperName] = {
 						title: s.MasterLabel,
-						description: `0 Customers (0%)`,
+						description: `0 ${Customer_Label} (0%)`,
 						monetaryVal: result[s.MasterLabel + ' Average'],
 						inlineStyle: `background-color: ${s.Colour__c}`,
 						onClick
 					};
 
-					if (result[s.MasterLabel]) {
-						this.tiles[s.DeveloperName].description = `${result[s.MasterLabel]} Customers (${percentage}%)`;
+					if(result[s.MasterLabel]) {
+						if (result[s.MasterLabel] == 1) {
+							this.tiles[s.DeveloperName].description = `${result[s.MasterLabel]} ${Customer_Singular_Label} (${percentage}%)`;
+						} else {
+							this.tiles[s.DeveloperName].description = `${result[s.MasterLabel]} ${Customer_Label} (${percentage}%)`;
+						}
 					}
 				});
 				this.yAxis = settings.Y_Axis__c || 'EngGrid_Frequency_Score__c';
