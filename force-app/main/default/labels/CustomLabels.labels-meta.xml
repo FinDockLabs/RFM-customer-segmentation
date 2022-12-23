@@ -72,4 +72,20 @@
 		<shortDescription>Monetary Value Text</shortDescription>
 		<value>Average Monetary Value:</value>
 	</labels>
+	<labels>
+		<fullName>Customer_Label</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Customers label in RFM grid</shortDescription>
+		<value>Customers</value>
+	</labels>
+	<labels>
+		<fullName>Customer_Singular_Label</fullName>
+		<categories>Engagement Grid</categories>
+		<language>en_US</language>
+		<protected>true</protected>
+		<shortDescription>Single Customer label in RFM Grid</shortDescription>
+		<value>Customer</value>
+	</labels>
 </CustomLabels>

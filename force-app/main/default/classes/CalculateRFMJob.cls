@@ -34,10 +34,10 @@ global with sharing class CalculateRFMJob extends cpm.BaseJobGlobal {
 		List<Contact> contacts = [
 			SELECT
 				id,
-				Recency_Score__c,
-				Frequency_Score__c,
-				Monetary_Score__c,
-				RFM_Segment__c,
+				EngGrid_Recency_Score__c,
+				EngGrid_Frequency_Score__c,
+				EngGrid_Monetary_Score__c,
+				EngGrid_RFM_Segment__c,
 				(
 					SELECT Id, cpm__Amount__c, cpm__Collection_Date__c
 					FROM cpm__Payments__r
@@ -66,21 +66,21 @@ global with sharing class CalculateRFMJob extends cpm.BaseJobGlobal {
 		Integer daysSinceLastPayment = c.cpm__Payments__r[0].cpm__Collection_Date__c.daysBetween(date.today());
 		Integer numberOfPayments = c.cpm__Payments__r.size();
 		Double totalAmount = 0;
-		c.Recency_Score__c = null;
-		c.Frequency_Score__c = null;
-		c.Monetary_Score__c = null;
+		c.EngGrid_Recency_Score__c = null;
+		c.EngGrid_Frequency_Score__c = null;
+		c.EngGrid_Monetary_Score__c = null;
 		for (cpm__Payment__c p : c.cpm__Payments__r) {
 			totalAmount += p.cpm__Amount__c;
 		}
 		for (Integer i = 0; i < recencyRanges.size(); i++) {
 			if (checkIfInRange(daysSinceLastPayment, recencyRanges[i])) {
-				c.Recency_Score__c = recencyRanges.size() - i;
+				c.EngGrid_Recency_Score__c = recencyRanges.size() - i;
 			}
 			if (checkIfInRange(numberOfPayments, frequencyRanges[i])) {
-				c.Frequency_Score__c = i + 1;
+				c.EngGrid_Frequency_Score__c = i + 1;
 			}
 			if (checkIfInRange(totalAmount, monetaryRanges[i])) {
-				c.Monetary_Score__c = monetaryRanges.size() - i;
+				c.EngGrid_Monetary_Score__c = monetaryRanges.size() - i;
 			}
 		}
 	}
@@ -93,8 +93,8 @@ global with sharing class CalculateRFMJob extends cpm.BaseJobGlobal {
 			Integer recencyMax = Integer.valueOf(maxRanges[0]);
 			Integer freqMin = Integer.valueOf(minRanges[1]);
 			Integer freqMax = Integer.valueOf(maxRanges[1]);
-			if (c.Recency_Score__c >= recencyMin && c.Recency_Score__c <= recencyMax && c.Frequency_Score__c >= freqMin && c.Frequency_Score__c <= freqMax) {
-				c.RFM_Segment__c = s.Label;
+			if (c.EngGrid_Recency_Score__c >= recencyMin && c.EngGrid_Recency_Score__c <= recencyMax && c.EngGrid_Frequency_Score__c >= freqMin && c.EngGrid_Frequency_Score__c <= freqMax) {
+				c.EngGrid_RFM_Segment__c = s.Label;
 			}
 		}
 	}

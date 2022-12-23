@@ -8,7 +8,7 @@
 	<formFactors>Large</formFactors>
 	<isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
 	<isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
-	<label>RFM Customer Segmentation</label>
+	<label>Engagement Grid</label>
 	<navType>Standard</navType>
 	<tabs>RFM_Grid</tabs>
 	<tabs>RFM_Settings</tabs>

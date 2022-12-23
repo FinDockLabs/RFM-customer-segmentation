@@ -8,10 +8,12 @@ import recalculateRFM from '@salesforce/apex/EngagementGridController.recalculat
 import getSettings from '@salesforce/apex/EngagementGridSetupController.getSettings';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import Monetary_Value_Text from '@salesforce/label/c.Monetary_Value_Text';
+import Customer_Label from '@salesforce/label/c.Customer_Label';
+import Customer_Singular_Label from '@salesforce/label/c.Customer_Singular_Label';
 
 const yAxisLabels = {
-	Frequency_Score__c: 'Frequency',
-	Monetary_Score__c: 'Monetary Value'
+	EngGrid_Frequency_Score__c: 'Frequency',
+	EngGrid_Monetary_Score__c: 'Monetary Value'
 };
 export default class EngagementGrid extends LightningElement {
 	labels = {
@@ -21,7 +23,7 @@ export default class EngagementGrid extends LightningElement {
 	tiles = {};
 	reportId = null;
 
-	yAxis = 'Frequency_Score__c';
+	yAxis = 'EngGrid_Frequency_Score__c';
 
 	xAxisLabel = 'Recency';
 	yAxisLabel = yAxisLabels[this.yAxis];
@@ -55,21 +57,25 @@ export default class EngagementGrid extends LightningElement {
 					const onClick = this.reportId ? () => window.open(`/lightning/r/${this.reportId}/view?fv0=${s.MasterLabel}`, '_blank') : this.noReportOnclick;
 					this.tiles[s.DeveloperName] = {
 						title: s.MasterLabel,
-						description: `0 Customers (0%)`,
+						description: `0 ${Customer_Label} (0%)`,
 						monetaryVal: result[s.MasterLabel + ' Average'],
 						inlineStyle: `background-color: ${s.Colour__c}`,
 						onClick
 					};
 
-					if (result[s.MasterLabel]) {
-						this.tiles[s.DeveloperName].description = `${result[s.MasterLabel]} Customers (${percentage}%)`;
+					if(result[s.MasterLabel]) {
+						if (result[s.MasterLabel] == 1) {
+							this.tiles[s.DeveloperName].description = `${result[s.MasterLabel]} ${Customer_Singular_Label} (${percentage}%)`;
+						} else {
+							this.tiles[s.DeveloperName].description = `${result[s.MasterLabel]} ${Customer_Label} (${percentage}%)`;
+						}
 					}
 				});
-				this.yAxis = settings.Y_Axis__c || 'Frequency_Score__c';
+				this.yAxis = settings.Y_Axis__c || 'EngGrid_Frequency_Score__c';
 				this.yAxisLabel = yAxisLabels[this.yAxis];
 				ranges.forEach((e) => {
 					this.xAxisValues.push(e.Recency_Range__c);
-					this.yAxisValues.push(e[this.yAxis === 'Frequency_Score__c' ? 'Frequency_Range__c' : 'Monetary_Range__c']);
+					this.yAxisValues.push(e[this.yAxis === 'EngGrid_Frequency_Score__c' ? 'Frequency_Range__c' : 'Monetary_Range__c']);
 				});
 				this.loaded = true;
 			})

@@ -4,8 +4,8 @@ import saveMetadata from '@salesforce/apex/EngagementGridSetupController.saveMet
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 export default class EngagementGridSetup extends LightningElement {
 	yAxisOptions = [
-		{ label: 'Recency / Frequency', value: 'Frequency_Score__c' },
-		{ label: 'Recency / Monetary Value', value: 'Monetary_Score__c' }
+		{ label: 'Recency / Frequency', value: 'EngGrid_Frequency_Score__c' },
+		{ label: 'Recency / Monetary Value', value: 'EngGrid_Monetary_Score__c' }
 	];
 
 	loading = true;

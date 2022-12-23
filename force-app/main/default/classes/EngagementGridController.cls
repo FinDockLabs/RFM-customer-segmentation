@@ -4,11 +4,11 @@ public class EngagementGridController {
 		Map<String, Object> stats = new Map<String, Object>();
 		Integer total = 0;
 
-		List<Sobject> countBySegments = database.query('select count(Id) recordCount, RFM_Segment__c from contact where RFM_Segment__c != null group by RFM_Segment__c');
+		List<Sobject> countBySegments = database.query('select count(Id) recordCount, EngGrid_RFM_Segment__c from contact where EngGrid_RFM_Segment__c != null group by EngGrid_RFM_Segment__c');
 
 		for (Sobject segment : countBySegments) {
-			stats.put(String.valueOf(segment.get('RFM_Segment__c')), Integer.valueOf(segment.get('recordCount')));
-			stats.put(String.valueOf(segment.get('RFM_Segment__c')) + ' Average', 0);
+			stats.put(String.valueOf(segment.get('EngGrid_RFM_Segment__c')), Integer.valueOf(segment.get('recordCount')));
+			stats.put(String.valueOf(segment.get('EngGrid_RFM_Segment__c')) + ' Average', 0);
 			total += Integer.valueOf(segment.get('recordCount'));
 		}
 

@@ -14,10 +14,10 @@ public with sharing class EngagementGridControllerTest {
 				contacts.add(
 					new Contact(
 						LastName = s.MasterLabel + i,
-						Recency_Score__c = Integer.valueOf(min[0]),
-						Frequency_Score__c = Integer.valueOf(min[1]),
-						RFM_Segment__c = s.MasterLabel,
-						Monetary_Score__c = Integer.valueOf(min[2])
+						EngGrid_Recency_Score__c = Integer.valueOf(min[0]),
+						EngGrid_Frequency_Score__c = Integer.valueOf(min[1]),
+						EngGrid_RFM_Segment__c = s.MasterLabel,
+						EngGrid_Monetary_Score__c = Integer.valueOf(min[2])
 					)
 				);
 			}
@@ -71,10 +71,10 @@ public with sharing class EngagementGridControllerTest {
 					SELECT COUNT()
 					FROM contact
 					WHERE
-						Recency_Score__c >= :Integer.valueOf(min[0])
-						AND Recency_Score__c <= :Integer.valueOf(max[0])
-						AND Frequency_Score__c >= :Integer.valueOf(min[1])
-						AND Frequency_Score__c <= :Integer.valueOf(max[1])
+						EngGrid_Recency_Score__c >= :Integer.valueOf(min[0])
+						AND EngGrid_Recency_Score__c <= :Integer.valueOf(max[0])
+						AND EngGrid_Frequency_Score__c >= :Integer.valueOf(min[1])
+						AND EngGrid_Frequency_Score__c <= :Integer.valueOf(max[1])
 				]
 			);
 		}

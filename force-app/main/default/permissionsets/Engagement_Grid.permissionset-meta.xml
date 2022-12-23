@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
 	<applicationVisibilities>
-		<application>RFM_Customer_Segmentation</application>
+		<application>Engagement_Grid</application>
 		<visible>true</visible>
 	</applicationVisibilities>
 	<fieldPermissions>
 		<editable>true</editable>
-		<field>Contact.Frequency_Score__c</field>
+		<field>Contact.EngGrid_Frequency_Score__c</field>
 		<readable>true</readable>
 	</fieldPermissions>
 	<fieldPermissions>
 		<editable>true</editable>
-		<field>Contact.Monetary_Score__c</field>
+		<field>Contact.EngGrid_Monetary_Score__c</field>
 		<readable>true</readable>
 	</fieldPermissions>
 	<fieldPermissions>
 		<editable>true</editable>
-		<field>Contact.RFM_Segment__c</field>
+		<field>Contact.EngGrid_RFM_Segment__c</field>
 		<readable>true</readable>
 	</fieldPermissions>
 	<fieldPermissions>
 		<editable>true</editable>
-		<field>Contact.Recency_Score__c</field>
+		<field>Contact.EngGrid_Recency_Score__c</field>
 		<readable>true</readable>
 	</fieldPermissions>
 	<hasActivationRequired>false</hasActivationRequired>
