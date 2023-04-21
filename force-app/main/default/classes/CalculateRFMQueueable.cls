@@ -26,7 +26,7 @@ global with sharing class CalculateRFMQueueable extends cpm.BaseJobProcessGlobal
 	}
 
 	global override Integer getChunkSize() {
-		return 2000;
+		return 200;
 	}
 
 	global override cpm.BaseJobGlobal getJobInstance() {
