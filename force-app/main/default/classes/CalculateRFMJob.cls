@@ -42,7 +42,7 @@ global with sharing class CalculateRFMJob extends cpm.BaseJobGlobal {
 					SELECT Id, cpm__Amount__c, cpm__Collection_Date__c
 					FROM cpm__Payments__r
 					WHERE cpm__Collection_Date__c >= :collDate AND cpm__Installment__r.cpm__Status__c = 'Collected' AND cpm__Installment__r.RecordTypeId = :recordTypeReceivable
-					ORDER BY cpm__Collection_Date__c DESC
+					ORDER BY cpm__Collection_Date__c DESC limit 1000
 				)
 			FROM Contact
 			WHERE Id >= :startingId
